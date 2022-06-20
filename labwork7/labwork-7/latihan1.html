@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #f1f3f5;
+        }
+
+        .container {
+            box-shadow: 0 6px 8px rgba(102,119,136,.03), 0 1px 2px rgba(102,119,136,.3);
+            background-color: #fff;
+            width: 500px;
+            height: auto;
+            margin: 40px auto;
+            padding: 20px 30px 20px 30px;
+        }
+
+        h1 > span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 0;
+        }
+
+        button, input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #f2f2f2;
+            display: inline-block;
+            margin-left: 20px;
+            min-width: 200px;
+        }
+
+        input[type="radio"] {
+            position: relative;
+            top: 2px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            font-size: 0.9rem;
+            min-width: auto;
+            padding: 10px 25px 10px 25px;
+        }
+
+        .input-control {
+            margin-bottom: 15px;
+        }
+
+        .input-control.button, .input-control.controls {
+            margin-top: 25px;
+            margin-left: 80px;
+        }
+    </style>
+    <title>Latihan 1</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-control">
+            <label for="num1">
+                Angka 1: <input type="text" id="num1" placeholder="Angka Pertama" autofocus>
+            </label>
+        </div>
+    
+        <div class="input-control">
+            <label for="num1">
+                Angka 2: <input type="text" id="num2" placeholder="Angka Kedua">
+            </label>
+        </div>
+    
+        <div class="input-control controls">
+            <label for="method_add">
+                    <input type="radio" name="method" id="method_add" value="add" checked>
+                    Jumlah
+            </label>
+            <label for="method_sub">
+                    <input type="radio" name="method" id="method_sub" value="sub">
+                    Kurang
+            </label>
+            <label for="method_mul">
+                    <input type="radio" name="method" id="method_mul" value="mul">
+                    Kali
+            </label>
+            <label for="method_div">
+                    <input type="radio" name="method" id="method_div" value="div">
+                    Bagi
+            </label>
+        </div>
+    
+        <div class="input-control button">
+            <button id="calculate">Hitung</button>
+        </div>
+    </div>
+
+    <div class="container result">
+        Jawaban
+        <p class="answer">0</p>
+    </div>
+
+    <script>
+        var btn = document.querySelector('#calculate');
+        btn.addEventListener ('click', function () {
+            var num1 = Number ( document.querySelector('#num1').value ),
+                num2 = Number ( document.querySelector('#num2').value ),
+                rlt = document.querySelector('p.answer');
+  
+            var method = document.querySelector('input[name="method"]:checked').value;
+            var answer = 0;
+            
+            if ( 'add' === method ) {
+                answer = num1 + num2;
+            } else if ( 'sub' === method ) {
+                answer = num1 - num2;
+            } else if ( 'mul' === method ) {
+                answer = num1 * num2;
+            } else if ( 'div' === method ) {
+                answer = num1 / num2;
+            }
+            
+            rlt.innerHTML = answer;
+        });
+    </script>
+</body>
+</html>

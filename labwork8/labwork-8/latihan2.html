@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+
+    <link rel="stylesheet" type="text/css" href="bahan/jquery-ui.min.css">
+    <script type="text/javascript" src="asset/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="asset/jquery-ui.min.js"></script>
+    <!-- <style>
+        body {
+            font-size:3em;
+            font-weight: bold;
+        }
+        ul li {
+            display:inline;
+            text-align:center;
+        }
+    </style> -->
+</head>
+<body>
+    <center>
+        <h1 id="jam">Placeholder Jam</h1>
+        <!-- <div id="clock">
+            <div id="date"></div>
+            <ul>
+                <li id="hours"></li>
+                <li id="point">:</li>
+                <li id="min"></li>
+                <li id="point">:</li>
+                <li id="sec"></li>
+            </ul>
+        </div> -->
+        <br>
+        <button id="start">START/STOP</button>
+    </center>
+
+    <script type="text/javascript">
+         $(function(){
+            $('#start').click(function(){
+                $('#jam').toggleClass('show');
+
+                setInterval(function(){
+                    if($('#jam').attr('class') === 'show'){
+                        let date = new Date();
+                        const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu' ];
+                        let bulan = ('Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember');
+                        bulan = bulan.split(" ");
+                        $('#jam').html(hari[date.getDay()] 
+                                        + ', ' 
+                                        + date.getDate()
+                                        + ' ' 
+                                        + bulan[date.getMonth()]
+                                        + ' '
+                                        + date.getFullYear()
+                                        + '<br>'
+                                        + date.toLocaleTimeString('en-GB'));  
+                    } else {
+                        $('#jam').html('Placeholder Jam');
+                    };
+                }, 1000);
+            });
+        });
+
+        // $(document).ready(function() {
+        //     var monthNames = [ "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" ]; 
+        //     var dayNames= ["Minggu","Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu"]
+        //     var newDate = new Date();
+        //     newDate.setDate(newDate.getDate());
+
+        //     $("#start").click(function(){
+        //         $("#clock").toggle();
+        //         $("#jam").toggle();
+        //         // $("#clock").text(($("#clock").text() == '#clock') ? 'stop' : '#clock')
+        //     });
+
+        //     $('#date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+        //     setInterval( function() {
+        //         var seconds = new Date().getSeconds();
+        //         $("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+        //     },1000);
+                
+        //     setInterval( function() {
+        //         var minutes = new Date().getMinutes();
+        //         $("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+        //     },1000);
+                
+        //     setInterval( function() {
+        //         var hours = new Date().getHours();
+        //         $("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+        //         }, 1000);
+        // });
+    </script>
+</body>
+</html>
